@@ -1,0 +1,9 @@
+var Int s;
+var Int i;
+s = (10 + 2)/4;
+
+while s < 201 {
+	s = 201;
+}
+
+println s;

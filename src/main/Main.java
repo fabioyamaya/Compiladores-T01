@@ -7,13 +7,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import ast.PW;
+
 public class Main {
 	public static void main( String []args ) {
 
-        File file;
+		File file;
         FileReader stream;
         int numChRead;
-        //Program program;
+        Program program;
 
         if ( args.length != 2 )  {
             System.out.println("Usage:\n   Main input output");
@@ -64,22 +66,21 @@ public class Main {
                 throw new RuntimeException();
             }
             PrintWriter printWriter = new PrintWriter(outputStream);
-            
-//            program = null;
-//            // the generated code goes to a file and so are the errors
+            program = null;
+              // the generated code goes to a file and so are the errors
             try {
-              compiler.compile(input, printWriter );
+              //program  = compiler.compile(input, printWriter );
             } catch ( RuntimeException e ) {
                 System.out.println(e);
             }
-//            if ( program != null ) {
-//              PW pw = new PW();
-//              pw.set(printWriter);
-//              program.genC(pw);
-//              if ( printWriter.checkError() ) {
-//                  System.out.println("There was an error in the output");
-//              }
-//           }
+            if ( program != null ) {
+              PW pw = new PW();
+              pw.set(printWriter);
+              program.genC(pw);
+              if ( printWriter.checkError() ) {
+                  System.out.println("There was an error in the output");
+              }
+            }
         }
     }
 } 

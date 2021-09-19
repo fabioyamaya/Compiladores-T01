@@ -9,9 +9,9 @@ public class PrintLnStat extends Statement {
 	
 	@Override
 	public void genC(PW pw) {
-		pw.print("printf(\"%d\n\", ");
+		pw.print("printf(\"%d\\n\", ");
 		expr.genC(pw);
-		pw.print(");");
+		pw.out.println(");");
 	}
 	
 	private Expr expr;

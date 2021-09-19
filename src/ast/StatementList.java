@@ -10,8 +10,9 @@ public class StatementList {
 
     public void genC( PW pw ) {
 
-      for( Statement s : v )
+      for( Statement s : v ) {
           s.genC(pw);
+      }
     }
 
     private ArrayList<Statement> v;

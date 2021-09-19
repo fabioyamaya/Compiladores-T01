@@ -7,26 +7,27 @@ public class ForStat extends Statement {
 		this.v = v;
 		this.startExpr = startExpr;
 		this.endExpr = endExpr;
+		this.statList = statList;
 	}
 
 	@Override
 	public void genC(PW pw) {
 
 		pw.print("for (int ");
-		pw.print(v.getName());
-		pw.print("; ");
-		pw.print(v.getName());
-		pw.print(" = ");
+		pw.out.print(v.getName());
+		pw.out.print("; ");
+		pw.out.print(v.getName());
+		pw.out.print(" = ");
 		startExpr.genC(pw);
-		pw.print("; ");
-		pw.print(v.getName());
-		pw.print(" <= ");
+		pw.out.print("; ");
+		pw.out.print(v.getName());
+		pw.out.print(" <= ");
 		endExpr.genC(pw);
-		pw.print(") {");
+		pw.out.println(") {");
 		pw.add();
 		statList.genC(pw);
 		pw.sub();
-		pw.print("}");
+		pw.println("}");
 	}
 
 	private Variable v;

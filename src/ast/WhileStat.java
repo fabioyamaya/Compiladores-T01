@@ -9,13 +9,13 @@ public class WhileStat extends Statement {
 	
 	@Override
 	public void genC(PW pw) {
-		pw.print("while (");
+		pw.print("while ");
 		expr.genC(pw);
-		pw.print(") {");
+		pw.out.println(" {");
 		pw.add();
 		statList.genC(pw);
 		pw.sub();
-		pw.print("}");
+		pw.println("}");
 	}
 	
 	private StatementList statList;
