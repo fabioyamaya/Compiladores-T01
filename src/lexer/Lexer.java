@@ -174,6 +174,20 @@ public class Lexer {
                         error.signal("Illegal literal character" + input[tokenPos-1] );
                       tokenPos++;
                       break;
+                    case '&' : 
+                    	if(input[tokenPos] != '&') {
+                    		error.signal("Illegal literal character" + input[tokenPos-1] );
+                    	}
+                    	token = Symbol.AND;
+                		tokenPos++;
+                		break;
+                    case '|' : 
+                    	if(input[tokenPos] != '|') {
+                    		error.signal("Illegal literal character" + input[tokenPos-1] );
+                    	}
+                    	token = Symbol.OR;
+                		tokenPos++;
+                		break;
                     default :
                       error.signal("Invalid Character: '" + ch + "'");
                 }

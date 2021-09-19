@@ -2,7 +2,7 @@ var Int s;
 var Int i;
 s = (10 + 2)/4;
 
-while s < 201 {
+while 0 && 1{
 	s = 201;
 }
 
