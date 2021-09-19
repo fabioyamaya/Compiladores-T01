@@ -149,7 +149,7 @@ public class Compiler {
 		Expr e = expr();
 		thenPart = statList();
 
-		if (lexer.token != Symbol.ELSE) {
+		if (lexer.token == Symbol.ELSE) {
 			lexer.nextToken();
 			elsePart = statList();
 		}

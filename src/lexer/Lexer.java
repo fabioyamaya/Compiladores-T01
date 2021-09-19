@@ -23,14 +23,9 @@ public class Lexer {
     static {
        keywordsTable = new Hashtable<String, Symbol>();
        keywordsTable.put( "var", Symbol.VAR );
-       keywordsTable.put( "begin", Symbol.BEGIN );
-       keywordsTable.put( "end", Symbol.END );
        keywordsTable.put( "if", Symbol.IF );
        keywordsTable.put( "else", Symbol.ELSE );
        keywordsTable.put( "Int", Symbol.INTEGER );
-       keywordsTable.put( "and", Symbol.AND );
-       keywordsTable.put( "or", Symbol.OR );
-       keywordsTable.put( "not", Symbol.NOT );
        keywordsTable.put( "while", Symbol.WHILE );
        keywordsTable.put( "for", Symbol.FOR );
        keywordsTable.put( "in", Symbol.IN );
@@ -115,10 +110,6 @@ public class Lexer {
                         tokenPos++;
                         token = Symbol.LE;
                       }
-                      else if ( input[tokenPos] == '>' ) {
-                        tokenPos++;
-                        token = Symbol.NEQ;
-                      }
                       else
                         token = Symbol.LT;
                       break;
@@ -182,6 +173,13 @@ public class Lexer {
                 		tokenPos++;
                 		break;
                     case '|' : 
+                    	if(input[tokenPos] != '|') {
+                    		error.signal("Illegal literal character" + input[tokenPos-1] );
+                    	}
+                    	token = Symbol.OR;
+                		tokenPos++;
+                		break;
+                    case '!' : 
                     	if(input[tokenPos] != '|') {
                     		error.signal("Illegal literal character" + input[tokenPos-1] );
                     	}

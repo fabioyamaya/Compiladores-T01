@@ -6,4 +6,10 @@ while 0 && 1{
 	s = 201;
 }
 
+if 9 == 9 {
+	s= 0;
+} else {
+s= 1;
+}
+
 println s;
