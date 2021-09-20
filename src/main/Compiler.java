@@ -13,6 +13,7 @@ import ast.IfStat;
 import ast.NumberExpr;
 import ast.PrintLnStat;
 import ast.PrintStat;
+import ast.Program;
 import ast.Statement;
 import ast.StatementList;
 import ast.UnaryExpr;
@@ -282,8 +283,9 @@ public class Compiler {
 		Expr left, right;
 		left = multExpr();
 
-		Symbol op = lexer.token;
-		while (lexer.token == Symbol.PLUS || lexer.token == Symbol.MINUS) {
+		Symbol op;
+		while ( (op = lexer.token) == Symbol.PLUS ||
+	              op == Symbol.MINUS ) {
 			lexer.nextToken();
 			right = multExpr();
 
@@ -297,8 +299,9 @@ public class Compiler {
 		Expr left, right;
 
 		left = simpleExpr();
-		Symbol op = lexer.token;
-		while (lexer.token == Symbol.MULT || lexer.token == Symbol.DIV || lexer.token == Symbol.REMAINDER) {
+		Symbol op;
+		while ( (op = lexer.token) == Symbol.MULT ||
+                op == Symbol.DIV || op == Symbol.REMAINDER ) {
 			lexer.nextToken();
 			right = simpleExpr();
 

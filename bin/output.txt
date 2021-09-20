@@ -1,12 +1,28 @@
 #include <stdio.h>
 
 void main() {
-   Int s;
    Int i;
+   Int soma;
+   Int somaFor;
+   Int n;
+   Int verd;
 
-   s = ((10 + 2) / 4);
-   while (s < 201) {
-      s = 201;
+   n = 100;
+   soma = 0;
+   i = 0;
+   verd = 2;
+   while ((i < n) && !!verd) {
+      if ( ((i % 2) == (0 + ((0 * 0) * 1))) ) { 
+         soma = (--soma + (i * i));
+      }
+      i = (i + 1);
    }
-   printf("%d\n", s);
+   somaFor = 0;
+   for (int k; k = 0; k <= 100) {
+      if ( ((i % 2) == 0) ) { 
+         somaFor = (somaFor + (k * k));
+      }
+   }
+   printf("%d\n", soma);
+   printf("%d\n", somaFor);
 }

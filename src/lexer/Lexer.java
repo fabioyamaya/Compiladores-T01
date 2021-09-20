@@ -180,11 +180,7 @@ public class Lexer {
                 		tokenPos++;
                 		break;
                     case '!' : 
-                    	if(input[tokenPos] != '|') {
-                    		error.signal("Illegal literal character" + input[tokenPos-1] );
-                    	}
-                    	token = Symbol.OR;
-                		tokenPos++;
+                    	token = Symbol.NOT;
                 		break;
                     default :
                       error.signal("Invalid Character: '" + ch + "'");
