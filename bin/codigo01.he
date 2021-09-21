@@ -2,7 +2,7 @@ var Int i;
 var Int soma;
 var Int somaFor;
 var Int n;
-var Int verd;
+var Int verd;;
 n = 100;
 soma = 0;
 i = 0;
@@ -14,7 +14,7 @@ while i < n && !!verd {
   i = i + 1;
 }
 somaFor = 0;
-for k in 0..100 {
+for k in (0 || 1)..(100 + 50) {
   if i%2 == 0 {
 	somaFor = somaFor + k*k;
   }
