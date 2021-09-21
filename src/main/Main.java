@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import ast.PW;
 import ast.Program;
@@ -16,6 +18,7 @@ public class Main {
 		FileReader stream;
 		int numChRead;
 		Program program;
+		Compiler compiler = new Compiler();
 
 		if (args.length != 2) {
 			System.out.println("Usage:\n   main.Program option input.he");
@@ -56,26 +59,37 @@ public class Main {
 			throw new RuntimeException();
 		}
 
+		FileOutputStream outputStream;
+		try {
+			outputStream = new FileOutputStream("output.txt");
+		} catch (IOException e) {
+			System.out.println("Output file could not be opened for writing");
+			throw new RuntimeException();
+		}
+		PrintWriter printWriter = new PrintWriter(outputStream);
+		program = null;
+		// the generated code goes to a file and so are the errors
+		try {
+			program = compiler.compile(input, printWriter);
+		} catch (RuntimeException e) {
+			System.out.println(e);
+		}
+		
+		
 		if (args[0].equals("-run")) {
-			System.out.println("run");
+			Map<String, Integer> memory = new HashMap<>();
+			
+			if (program != null) {
+				PW pw = new PW();
+				pw.set(printWriter);
+				program.run(memory);
+				if (printWriter.checkError()) {
+					System.out.println("There was an error in the output");
+				}
+			}
 
 		} else if (args[0].equals("-gen")) {
-			Compiler compiler = new Compiler();
-			FileOutputStream outputStream;
-			try {
-				outputStream = new FileOutputStream("output.txt");
-			} catch (IOException e) {
-				System.out.println("Output file could not be opened for writing");
-				throw new RuntimeException();
-			}
-			PrintWriter printWriter = new PrintWriter(outputStream);
-			program = null;
-			// the generated code goes to a file and so are the errors
-			try {
-				program = compiler.compile(input, printWriter);
-			} catch (RuntimeException e) {
-				System.out.println(e);
-			}
+
 			if (program != null) {
 				PW pw = new PW();
 				pw.set(printWriter);
@@ -90,4 +104,4 @@ public class Main {
 		}
 
 	}
-} 
+}

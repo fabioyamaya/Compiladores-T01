@@ -9,4 +9,5 @@ public class Variable {
     public String getName() { return name; }
 
     private String name;
+
 }
