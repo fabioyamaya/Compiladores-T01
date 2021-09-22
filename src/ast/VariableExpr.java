@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.Map;
+
 public class VariableExpr extends Expr {
 
     public VariableExpr( Variable v ) {
@@ -9,6 +11,11 @@ public class VariableExpr extends Expr {
     @Override
 	public void genC( PW pw ) {
         pw.out.print( v.getName() );
+    }
+
+    @Override
+    public Integer run(Map<String, Integer> memory) {
+        return memory.get(v.getName());
     }
 
 
