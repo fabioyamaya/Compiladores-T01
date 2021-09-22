@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.Map;
+
 public class PrintLnStat extends Statement {
 	
 	public PrintLnStat(Expr expr) {
@@ -13,7 +15,12 @@ public class PrintLnStat extends Statement {
 		expr.genC(pw);
 		pw.out.println(");");
 	}
-	
+
+	@Override
+	public void run(Map<String, Integer> memory) {
+		System.out.println(expr.run(memory));
+	}
+
 	private Expr expr;
 }
 

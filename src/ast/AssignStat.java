@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.Map;
+
 public class AssignStat extends Statement {
 
     public AssignStat( Variable v, Expr expr ) {
@@ -13,6 +15,12 @@ public class AssignStat extends Statement {
         expr.genC(pw);
         pw.out.println(";");
     }
+
+    @Override
+    public void run(Map<String, Integer> memory) {
+        memory.put(v.getName(), expr.run(memory));
+    }
+
     private Variable v;
     private Expr expr;
 }

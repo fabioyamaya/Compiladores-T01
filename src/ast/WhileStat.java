@@ -1,5 +1,7 @@
 package ast;
 
+import java.util.Map;
+
 public class WhileStat extends Statement {
 	public WhileStat(StatementList statList, Expr expr) {
 		super();
@@ -17,7 +19,14 @@ public class WhileStat extends Statement {
 		pw.sub();
 		pw.println("}");
 	}
-	
+
+	@Override
+	public void run(Map<String, Integer> memory) {
+		while (expr.run(memory) != 0) {
+			statList.run(memory);
+		}
+	}
+
 	private StatementList statList;
 	private Expr expr;
 	

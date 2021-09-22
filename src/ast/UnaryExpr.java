@@ -2,6 +2,8 @@ package ast;
 
 import lexer.Symbol;
 
+import java.util.Map;
+
 public class UnaryExpr extends Expr {
 
     public UnaryExpr( Expr expr, Symbol op ) {
@@ -23,6 +25,21 @@ public class UnaryExpr extends Expr {
               break;
         }
         expr.genC(pw);
+    }
+
+    @Override
+    public Integer run(Map<String, Integer> memory) {
+        switch ( op ) {
+            case PLUS :
+                return +expr.run(memory);
+            case MINUS :
+                return -expr.run(memory);
+            case NOT :
+                return expr.run(memory) == 0 ? 1 : 0;
+            default:
+                System.out.println("Operação " + op.toString() + " não implementada");
+                return 0;
+        }
     }
 
 

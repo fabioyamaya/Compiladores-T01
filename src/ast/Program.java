@@ -33,7 +33,7 @@ public class Program {
 	}
 
 	public void run(Map<String, Integer> memory) {
-		
+		statementList.run(memory);
 	}
 
 	private ArrayList<Variable> arrayVariable;
