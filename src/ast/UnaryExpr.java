@@ -24,7 +24,13 @@ public class UnaryExpr extends Expr {
               pw.out.print("!");
               break;
         }
-        expr.genC(pw);
+        if(expr.getClass() == UnaryExpr.class) {
+            pw.out.print("(");
+            expr.genC(pw);
+            pw.out.print(")");
+        } else {
+            expr.genC(pw);
+        }
     }
 
     @Override
