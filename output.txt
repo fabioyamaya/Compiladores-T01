@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 void main() {
-   Int i;
-   Int soma;
-   Int somaFor;
-   Int n;
-   Int verd;
+   int i;
+   int soma;
+   int somaFor;
+   int n;
+   int verd;
 
    n = 100;
    soma = 0;
@@ -18,8 +18,8 @@ void main() {
       i = (i + 1);
    }
    somaFor = 0;
-   for (int k; k = 0; k <= 100) {
-      if ( ((i % 2) == 0) ) { 
+   for (int k = 0; k < 100; ++k) {
+      if ( ((k % 2) == 0) ) { 
          somaFor = (somaFor + (k * k));
       }
    }
