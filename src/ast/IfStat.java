@@ -33,7 +33,7 @@ public class IfStat extends Statement {
 	public void run(Map<String, Integer> memory) {
 		if (expr.run(memory) != 0) {
 			thenPart.run(memory);
-		} else {
+		} else if (elsePart != null) {
 			elsePart.run(memory);
 		}
 	}
