@@ -11,9 +11,9 @@ public class AssignStat extends Statement {
 
     @Override
 	public void genC( PW pw ) {
-        pw.print(v.getName() + " = " );
+        pw.print(v.getName() + " = " , true);
         expr.genC(pw);
-        pw.out.println(";");
+        pw.println(";", false);
     }
 
     @Override

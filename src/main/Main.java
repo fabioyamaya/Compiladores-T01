@@ -61,7 +61,7 @@ public class Main {
 
 		FileOutputStream outputStream;
 		try {
-			outputStream = new FileOutputStream("output.txt");
+			outputStream = new FileOutputStream("output.c");
 		} catch (IOException e) {
 			System.out.println("Output file could not be opened for writing");
 			throw new RuntimeException();

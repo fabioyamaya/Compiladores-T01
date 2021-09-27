@@ -15,19 +15,19 @@ public class UnaryExpr extends Expr {
 	public void genC( PW pw ) {
         switch ( op ) {
             case PLUS :
-              pw.out.print("+");
+              pw.print("+", false);
               break;
             case MINUS :
-              pw.out.print("-");
+              pw.print("-", false);
               break;
             case NOT :
-              pw.out.print("!");
+              pw.print("!", false);
               break;
         }
         if(expr.getClass() == UnaryExpr.class) {
-            pw.out.print("(");
+            pw.print("(", false);
             expr.genC(pw);
-            pw.out.print(")");
+            pw.print(")", false);
         } else {
             expr.genC(pw);
         }

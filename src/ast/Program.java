@@ -17,19 +17,19 @@ public class Program {
 	}
 
 	public void genC(PW pw) {
-		pw.out.println("#include <stdio.h>");
-		pw.out.println();
-		pw.println("void main() {");
+		pw.println("#include <stdio.h>", true);
+		pw.println("", false);
+		pw.println("void main() {", true);
 
 		pw.add();
 		// generate code for the declaration of variables
 		for (Variable v : arrayVariable) {
-			pw.println("int" + " " + v.getName() + ";");
+			pw.println("int" + " " + v.getName() + ";", true);
 		}
-		pw.out.println("");
+		pw.println("",true);
 		statementList.genC(pw);
 		pw.sub();
-		pw.out.println("}");
+		pw.println("}", true);
 	}
 
 	public void run(Map<String, Integer> memory) {

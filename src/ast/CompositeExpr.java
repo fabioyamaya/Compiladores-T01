@@ -15,11 +15,11 @@ public class CompositeExpr extends Expr {
 
 	@Override
 	public void genC(PW pw) {
-		pw.out.print("(");
+		pw.print("(", false);
 		left.genC(pw);
-		pw.out.print(" " + oper.toString() + " ");
+		pw.print(" " + oper.toString() + " ", false);
 		right.genC(pw);
-		pw.out.print(")");
+		pw.print(")", false);
 	}
 
 	@Override

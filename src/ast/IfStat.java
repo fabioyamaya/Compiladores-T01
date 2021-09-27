@@ -13,19 +13,19 @@ public class IfStat extends Statement {
 	@Override
 	public void genC(PW pw) {
 
-		pw.print("if ( ");
+		pw.print("if ( ", true);
 		expr.genC(pw);
-		pw.out.println(" ) { ");
+		pw.println(" ) { ", false);
 		pw.add();
 		thenPart.genC(pw);
 		pw.sub();
-		pw.println("}");
+		pw.println("}", true);
 		if (elsePart != null) {
-			pw.println("else {");
+			pw.println("else {", true);
 			pw.add();
 			elsePart.genC(pw);
 			pw.sub();
-			pw.println("}");
+			pw.println("}", true);
 		}
 	}
 

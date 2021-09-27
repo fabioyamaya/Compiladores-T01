@@ -12,9 +12,9 @@ public class PrintStat extends Statement {
 	
 	@Override
 	public void genC(PW pw) {
-		pw.print("printf(%d, ");
+		pw.print("printf(\"%d\", ", true);
 		expr.genC(pw);
-		pw.print(");");
+		pw.println(");", false);
 	}
 
 	@Override

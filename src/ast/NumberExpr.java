@@ -14,7 +14,7 @@ public class NumberExpr extends Expr {
 
 	@Override
 	public void genC(PW pw) {
-		pw.out.print(value);
+		pw.print(String.valueOf(value), false);
 	}
 
 	@Override

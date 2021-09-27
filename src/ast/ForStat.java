@@ -15,21 +15,21 @@ public class ForStat extends Statement {
 	@Override
 	public void genC(PW pw) {
 
-		pw.print("for (int ");
-		pw.out.print(v.getName());
-		pw.out.print(" = ");
+		pw.print("for (int ", true);
+		pw.print(v.getName(), false);
+		pw.print(" = ", false);
 		startExpr.genC(pw);
-		pw.out.print("; ");
-		pw.out.print(v.getName());
-		pw.out.print(" < ");
+		pw.print("; ", false);
+		pw.print(v.getName(), false);
+		pw.print(" < ", false);
 		endExpr.genC(pw);
-		pw.out.print("; ++");
-		pw.out.print(v.getName());
-		pw.out.println(") {");
+		pw.print("; ++", false);
+		pw.print(v.getName(), false);
+		pw.println(") {", false);
 		pw.add();
 		statList.genC(pw);
 		pw.sub();
-		pw.println("}");
+		pw.println("}", true);
 	}
 
 	@Override

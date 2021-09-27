@@ -10,7 +10,7 @@ public class VariableExpr extends Expr {
 
     @Override
 	public void genC( PW pw ) {
-        pw.out.print( v.getName() );
+        pw.print( v.getName(), false );
     }
 
     @Override
